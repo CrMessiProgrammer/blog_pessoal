@@ -24,7 +24,7 @@ import { UsuarioModule } from './usuario/usuario.module';
       database: 'db_blogpessoal', // Nome do banco de dados
       entities: [Postagem, Tema, Usuario], // Entidades -> Cria tabelas no banco de dados
       synchronize: true,  // Verifica se teve alteração na module, atualizando caso tenha (deixa tudo sincronizado)
-      logging: true,  // Mostra no console os comandos SQL gerados no Type ORM
+      //logging: true,  // Mostra no console os comandos SQL gerados no Type ORM
     }),
     PostagemModule,
     TemaModule,
