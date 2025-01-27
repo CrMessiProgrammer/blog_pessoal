@@ -84,7 +84,23 @@ describe('Testes dos Módulos Usuario e Auth (e2e)', () => {
     .expect(200)
   })
 
-  it("05 - Deve Atualizar um Usuário", async () => {
+  it("05 - Deve Listar o Usuário pelo ID", async () => {
+    return request(app.getHttpServer())
+    .get('/usuarios/1')
+    .set('Authorization', `${token}`)
+    .send({})
+    .expect(200)
+  })
+
+  it("06 - Não Deve Listar um ID de Usuário Não Encontrado", async () => {
+    return request(app.getHttpServer())
+    .get('/usuarios/2')
+    .set('Authorization', `${token}`)
+    .send({})
+    .expect(404)
+    })
+
+  it("07 - Deve Atualizar um Usuário", async () => {
     return request(app.getHttpServer())
     .put('/usuarios/atualizar')
     .set('Authorization', `${token}`)
@@ -101,37 +117,6 @@ describe('Testes dos Módulos Usuario e Auth (e2e)', () => {
       expect("Root Atualizado").toEqual(resposta.body.nome);
     })
 
-  })
-
-  it("06 - Deve Listar o Usuário pelo ID", async () => {
-    return request(app.getHttpServer())
-    .get('/usuarios/1')
-    .set('Authorization', `${token}`)
-    .send({})
-    .expect(200)
-  })
-
-  it("07 - Deve Cadastrar um Novo Tema", async () => {
-    const resposta = await request(app.getHttpServer())
-      .post('/temas')
-      .set('Authorization', `${token}`) // Autorizando acesso à esse método
-      .send({
-        titulo: 'Tema 01',
-        descricao: 'Texto do tema 01',
-      })
-      .expect(201)
-
-      // Armazena esse 'Id' para ter disponível para os testes CRUD mais a frente
-      usuarioId = resposta.body.id;
-
-  });
-
-  it("08 - Deve Deletar o Tema pelo ID", async () => {
-    return request(app.getHttpServer())
-    .delete('/temas/1')
-    .set('Authorization', `${token}`)
-    .send({})
-    .expect(204)
   })
 
 });
