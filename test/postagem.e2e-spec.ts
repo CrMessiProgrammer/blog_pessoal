@@ -158,7 +158,7 @@ describe('Testes do Módulo Postagem (e2e)', () => {
 
   it("10 - Deve Deletar a Postagem pelo ID", async () => {
     return request(app.getHttpServer())
-    .delete('/temas/1')
+    .delete('/postagens/1')
     .set('Authorization', `${token}`)
     .send({})
     .expect(204)

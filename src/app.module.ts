@@ -19,7 +19,7 @@ import { ProdService } from './data/services/prod.service';
     imports: [
       ConfigModule.forRoot(),
       TypeOrmModule.forRootAsync({
-        useClass: ProdService,
+        useClass: ProdService,  // Os testes (e2e) só funcionam com "DevService"
         imports: [ConfigModule],
     }),
     PostagemModule,
