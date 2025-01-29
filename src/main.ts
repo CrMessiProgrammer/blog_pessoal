@@ -7,9 +7,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-  .setTitle('Blog Pessoal')
-  .setDescription('Projeto Blog Pessoal')
-  .setContact("Carlos Henrique Nunes","https://github.com/CrMessiProgrammer/blog_pessoal/tree/main","carloshnunes383@gmail.com")
+  .setTitle('Projeto Blog Pessoal')
+  .setDescription('Projeto Blog Pessoal - Generation Brasil')
+  .setContact("Carlos Henrique Nunes","https://www.linkedin.com/in/carlos-henrique-nunes-234005190/","carloshnunes383@gmail.com")
+  .setLicense("Generation Brasil", "https://brazil.generation.org/")
+  .setExternalDoc("GitHub", "https://github.com/CrMessiProgrammer")
   .setVersion('1.0')
   .addBearerAuth()
   .build();
